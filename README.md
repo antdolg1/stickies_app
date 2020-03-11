@@ -17,3 +17,5 @@ How to run the project:
  
  
 Open browser and go to: http://localhost:8080/
+
+![](resources/preview.png)
