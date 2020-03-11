@@ -2,12 +2,11 @@
 @import url(https://fonts.googleapis.com/css?family=Kalam);
 
 // VARIABLES
-$light-yellow-color: #FFC43A;
+$first-yellow-color: #FFC43A;
 $second-yellow-color: #FFDA65;
 $turquoise-color: #1AB188;
 $white-color: white;
 $black-color: black;
-$body-background: #24313C;
 
 // MIXINS
 @mixin transition($args...) {
@@ -79,7 +78,7 @@ li {
 }
 
 li:hover {
-  color: black;
+  color: $black-color;
 }
 
 select {
@@ -92,7 +91,7 @@ select {
 }
 
 select:hover {
-  color: black;
+  color: $black-color;
 }
 
 select option:first-child {
@@ -105,8 +104,8 @@ img {
 }
 
 option.black {
-  background-color: black;
-  color: white;
+  background-color: $black-color;
+  color: $white-color;
 }
 
 option.blue {
@@ -114,7 +113,7 @@ option.blue {
 }
 
 option.yellow {
-  background-color: #FFDA65;
+  background-color: $second-yellow-color;
 }
 
 .board {
