@@ -1,0 +1,279 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Kalam);
+
+// VARIABLES
+$light-yellow-color: #FFC43A;
+$second-yellow-color: #FFDA65;
+$turquoise-color: #1AB188;
+$white-color: white;
+$black-color: black;
+$body-background: #24313C;
+
+// MIXINS
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+// CSS
+body,
+html,
+.board,
+#react-container {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(black 15%, transparent 16%) 0 0,
+  radial-gradient(black 15%, transparent 16%) 8px 8px,
+  radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+  background-color: #555555;
+  background-size: 16px 16px;
+}
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: #F7F7F9;
+}
+
+li {
+  float: left;
+  display: block;
+  height: 40px;
+  color: dimgray;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+li:hover {
+  color: black;
+}
+
+select {
+  background-color: transparent;
+  width: 80px;
+  font-size: 20px;
+  border: 0;
+  outline: 0;
+  color: dimgray;
+}
+
+select:hover {
+  color: black;
+}
+
+select option:first-child {
+  display:none;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+
+option.black {
+  background-color: black;
+  color: white;
+}
+
+option.blue {
+  background-color: #00CCFF;
+}
+
+option.yellow {
+  background-color: #FFDA65;
+}
+
+.board {
+  width: 100%;
+  height: 100%;
+}
+
+.boardTransparent {
+  width: 100%;
+  height: 5%;
+  position: relative;
+  top: -16px;
+  border-radius: 1px 1px 20px 20px;
+  background: rgb(85,85,85);
+  background: linear-gradient(0deg, rgba(85,85,85,0.1) 0%, rgba(255,255,255,0.7) 100%);
+  border-top: 0.5px solid gray;
+}
+
+.close {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin: 4px;
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+
+  &:hover {
+    &::before, &::after {
+      background: $turquoise-color;
+      color: $turquoise-color;
+    }
+  }
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #000000;
+    height: 1px;
+  }
+
+  &::before {
+    @include transform(rotate(45deg));
+  }
+
+  &::after {
+    @include transform(rotate(-45deg));
+  }
+}
+
+.navbar {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.navbarImage {
+  padding-top: 20px;
+}
+
+.navbarTitle {
+  font-family: 'Kalam', serif;
+  color: $black-color;
+  font-size: 34px;
+  text-align: center;
+  padding-top: 20px;
+  padding-left: 0px;
+}
+
+.main-header__text {
+  padding: 15px;
+}
+
+.counter {
+  display: inline;
+  font-size: 34px;
+  padding: 25px 40px;
+}
+
+.color-menu {
+  border: 1px solid;
+}
+
+.note {
+  width: 250px;
+  min-height: 250px;
+  height: auto;
+  background: $second-yellow-color;
+  color: black;
+  margin: 2px 0;
+  position: absolute;
+  cursor: move;
+  border: 1.5px solid black;
+  border-radius: 10px 40px 10px 40px;
+  -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+
+  .noteTitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .note__titlearea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    background: inherit;
+    color: inherit;
+    border: none;
+    overflow: auto;
+    resize: none;
+    outline: none;
+  }
+
+  .note__textarea {
+    font-family: 'Roboto', sans-serif;
+    width: 98%;
+    min-height: 150px;
+    font-size: 16px;
+    background: inherit;
+    color: inherit;
+    border: none;
+    overflow: auto;
+    resize: vertical;
+    outline: none;
+    white-space: pre-wrap;
+  }
+
+  .note__content {
+    font-size: 16px;
+    padding: 5px;
+    white-space: pre-wrap;
+  }
+
+  .note__header {
+    height: 40px;
+    width: 100%;
+    border-radius: 10px 40px 0px 0px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .note__footer {
+    position: relative;
+    bottom: 0;
+
+    .note__save {
+      width: calc(100% - 40px);
+      height: 30px;
+      text-align: center;
+      cursor: pointer;
+      display: inline-block;
+      color: $white-color;
+      border: none;
+    }
+  }
+}
